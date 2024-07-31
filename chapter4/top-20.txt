@@ -1,0 +1,21 @@
+geo_name,state_us_abbreviation,population_count_100_percent
+Loving County,TX,82
+Kalawao County,HI,90
+King County,TX,286
+Kenedy County,TX,416
+Arthur County,NE,460
+Blaine County,NE,478
+Petroleum County,MT,494
+McPherson County,NE,539
+Grant County,NE,614
+Loup County,NE,632
+Borden County,TX,641
+Thomas County,NE,647
+Yakutat City and Borough,AK,662
+Banner County,NE,690
+Harding County,NM,695
+San Juan County,CO,699
+McMullen County,TX,707
+Mineral County,CO,712
+Treasure County,MT,718
+Slope County,ND,727
