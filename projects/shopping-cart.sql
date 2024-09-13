@@ -43,10 +43,12 @@ INSERT INTO Users (User_ID, Username) VALUES
 (2, 'David'),
 (3, 'Michael');
 
-INSERT INTO Cart (ProductId, Qty) VALUES
-(1, 2),  
-(2, 1);  
+SELECT * FROM ProductsMenu;
 
+SELECT Qty,Name FROM Cart
+INNER JOIN ProductsMenu ON Cart.ProductId = ProductsMenu.Id;
+
+-- places items into cart
 DO $$
 BEGIN
     IF EXISTS (SELECT 1 FROM Cart WHERE ProductId = 1) THEN
@@ -59,18 +61,20 @@ BEGIN
     END IF;
 END $$;
 
+-- deletes items from cart
 DO $$
 BEGIN
-    IF EXISTS (SELECT 1 FROM Cart WHERE ProductId = 1 AND Qty > 1) THEN
+    IF EXISTS (SELECT 1 FROM Cart WHERE ProductId = 2 AND Qty > 1) THEN
         UPDATE Cart
         SET Qty = Qty - 1
-        WHERE ProductId = 1;
+        WHERE ProductId = 2;
     ELSE
         DELETE FROM Cart
-        WHERE ProductId = 1;
+        WHERE ProductId = 2;
     END IF;
 END $$;
 
+-- adds items to checkout then clears cart
 DO $$
 DECLARE
     newOrderID INT;
@@ -85,6 +89,7 @@ BEGIN
     DELETE FROM Cart;
 END $$;
 
+-- shows active orders
 SELECT oh.OrderID, oh.OrderDate, u.Username, p.Name, od.Qty
 FROM OrderHeader oh
 INNER JOIN Users u ON oh.UserID = u.User_ID
